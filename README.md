@@ -87,3 +87,4 @@ Now wait for another contributor to review and merge it.
 1. Setting up Virtual Environment: virtualenv env
 2. Launching Virtual Environment: source env/bin/activate
 3. Setting Up Flask: pip3 install flask flask-sqlalchemy flask-login
+4. To run the App: Run main.py and open your browswer to http://127.0.0.1:5000/

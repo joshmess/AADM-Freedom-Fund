@@ -1,0 +1,41 @@
+{% extends "base.html" %} {% block title%} Login {% endblock %} {% block content
+%}
+<div class="container">
+  <h1>Welcome to AADM</h1>
+  <form action="" method="POST">
+    <h2>Login for Access</h2>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        name="email"
+        placeholder="Enter Email"
+      />
+    </div>
+    <div class="form-group">
+      <label for="email">Username</label>
+      <input
+        type="text"
+        class="form-control"
+        id="username"
+        name="username"
+        placeholder="Enter Username"
+      />
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        name="password"
+        placeholder="Enter Password"
+      />
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+
+{% endblock %}

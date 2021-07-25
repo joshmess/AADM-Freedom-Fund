@@ -8,7 +8,7 @@ Here’s a [link](https://docs.google.com/document/d/1ge8wgcUFPzQh9OQZC-WhiMtNgm
 
 ### Our goal is to:
 
-1. Scrape publicly available data from this [website](http://enigma.athensclarkecounty.com/photo/jailcurrent.asp) every morning (on a timer)
+1. Scrape publicly available data from this [website](http://enigma.athensclarkecounty.com/photo/bookingreport.asp) every morning (on a timer)
 1. Process the scraped data into a Python Dictionary and import to an SQL database
    - We will have two schema’s: one for user login and storing scraped data
 1. Create a Login Page and Home Page

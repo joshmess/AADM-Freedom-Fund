@@ -1,0 +1,19 @@
+{% extends "base.html" %} {% block title%} Prisoner List {% endblock %} {% block content
+%}
+<h1>Here are all of our Prisoners</h1>
+{% for prisoner in prisoners %}
+<ul id="prisoner.name">
+  <li>
+    <span class="field-name">Prisoner:</span>
+    <span class="field-value">{{ prisoner.name }}</span>
+  </li>
+  <li>
+    <span class="field-name">Bond Amount:</span>
+    <span class="field-value">{{ prisoner.bond_amount }}</span>
+  </li>
+  <li>
+    <span class="field-name">Description:</span>
+    <span class="field-value">{{ prisoner.charge_description }}</span>
+  </li>
+</ul>
+{% endfor %} {% endblock %}

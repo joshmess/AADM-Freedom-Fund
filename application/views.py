@@ -18,6 +18,7 @@ def prisoners():
 
 @views.route('/load')
 def load_data():
+    # TODO Ability to update the database, right now it cannot update the database
     with open("aadm_db.csv", newline='') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         line_count = 0
@@ -46,7 +47,6 @@ def load_data():
             return redirect(url_for("/"))
         except Exception as e:
             db.session.rollback()
-            print(row[4])
             print(e)
 
     return "<h1>CSV LOADING</h1>"

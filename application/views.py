@@ -18,22 +18,22 @@ def prisoners():
 
 @views.route('/load')
 def load_data():
-    with open("aadm_db.csv") as csv_file:
+    with open("aadm_db.csv", newline='') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         line_count = 0
 
         try:
             for row in csv_reader:
-                print("Adding Prisoner " + str(line_count))
                 if line_count == 0:
                     line_count += 1
                 else:
                     line_count += 1
                     prisoner = Prisoner(
+                        id = row[0],
                         arresting_agency=row[1],
                         grade_of_charge=row[2],
                         charge_description=row[3],
-                        bond_amount=float(row[4]),
+                        bond_amount=convertBondAmount(row[4]),
                         disqualifies=(row[5] == 'True'),
                         mid=int(row[6]),
                         name=row[7],
@@ -46,5 +46,13 @@ def load_data():
             return redirect(url_for("/"))
         except Exception as e:
             db.session.rollback()
+            print(row[4])
+            print(e)
 
-    return "<h1>Uploading CSV!</h1>"
+    return "<h1>CSV LOADING</h1>"
+
+def convertBondAmount(bond):
+    if bond == '$':
+        return None
+    else:
+        return float(bond.strip('$').replace(',', ''))

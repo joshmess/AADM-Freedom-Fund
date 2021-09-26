@@ -5,6 +5,7 @@ from os import path
 
 db = SQLAlchemy()
 DB_NAME = "User.db"
+PRISONER_DB_NAME = "Prisoners.db"
 
 
 def create_app():
@@ -18,6 +19,9 @@ def create_app():
 
     # instantiating SQLAlchemy
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+    app.config['SQLALCHEMY_BINDS'] = {
+        "prisoners": f'sqlite:///{PRISONER_DB_NAME}'
+    }
     db.init_app(app)
 
     from .views import views
@@ -36,3 +40,7 @@ def create_database(app):
     if not path.exists("application/" + DB_NAME):
         db.create_all(app=app)
         print("Created Database!")
+
+    if not path.exists("application/" + PRISONER_DB_NAME):
+        db.create_all(bind="prisoners", app=app)
+        print("Created Prisoner Database!")

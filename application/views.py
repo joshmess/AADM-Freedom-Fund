@@ -52,6 +52,10 @@ def load_data():
     return "<h1>CSV LOADING</h1>"
 
 def convertBondAmount(bond):
+    """
+        Remove unnecessary characters in the string to successfully convert
+        it to a float. If the bond amount is not present, return None.
+    """
     if bond == '$':
         return None
     else:

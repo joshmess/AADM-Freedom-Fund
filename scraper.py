@@ -33,7 +33,6 @@ TO EXTRACT THE UNIQUE ID ASSIGNED TO EVERY PERSON BEING HELD
  
 FROM HERE, THE UNIQUE ID IS ADDED TO A TEMPORARY LIST CALLED "mids"
 """
- 
 mids = []
  
 for link in links:
@@ -44,7 +43,7 @@ for link in links:
 """
 THIS PIECE OF SCRIPT BEGINS BUILDING OUR DICTIONARY
 """
- 
+print("LENGTH OF LIST: " + str(len(links)))
 i = 0
 for id in mids:
     aadm_dic.append({
@@ -61,12 +60,18 @@ IN THIS SECTION WE SCRAPE THE INDIVIDUAL URLS OF EACH MID
 """
  
 id_index = 0
-for link in links:
+for link in links: 
+    print(id_index)
+    print(names[id_index])
+    print("*************")
     unique_url = link
     unique_page = requests.get(unique_url)
     unique_soup = bs(unique_page.content, 'html.parser')
  
     unique_charge_table = unique_soup.find('tbody', id='mrc_main_table')
+    print(unique_charge_table)
+    print("*************")
+    print()
     unique_charge_table_items = unique_charge_table.find_all('td')
  
     temp = []

@@ -8,13 +8,15 @@ views = Blueprint('views', __name__)
 
 @views.route('/')
 def home():
-    users = User.query.all()
-    return render_template("home.html", users=users)
+    totaljailed = Prisoner.query.all()
+    return render_template("home.html", totaljailed=totaljailed)
+
 
 @views.route('/prisoners')
 def prisoners():
     prisoners = Prisoner.query.all()
     return render_template("prisoners.html", prisoners=prisoners)
+
 
 @views.route('/load')
 def load_data():
@@ -30,7 +32,7 @@ def load_data():
                 else:
                     line_count += 1
                     prisoner = Prisoner(
-                        id = row[0],
+                        id=row[0],
                         arresting_agency=row[1],
                         grade_of_charge=row[2],
                         charge_description=row[3],
@@ -50,6 +52,7 @@ def load_data():
             print(e)
 
     return "<h1>CSV LOADING</h1>"
+
 
 def convertBondAmount(bond):
     """

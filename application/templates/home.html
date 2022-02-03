@@ -1,15 +1,27 @@
-{% extends "base.html" %} {% block title%} Home {% endblock %} {% block content
-%}
+{% extends "base.html" %} {% block content %}
+<h2>Freedom Fund Database</h2>
+<p>Search the table for first names, last names or emails:</p>
+<input class="form-control" id="myInput" type="text" placeholder="Search.." />
+<br />
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Bond Amount</th>
+      <th scope="col">Qualifies</th>
+    </tr>
+  </thead>
+  <tbody id="myTable">
+    {% for jailed in totaljailed %}
+    <tr>
+      <th scope="row">{{ jailed.mid }}</th>
+      <td>{{ jailed.name }}</td>
+      <td>${{ jailed.bond_amount }}</td>
+      <td>{{ jailed.qualifies }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 <h1>Here are all of our Users</h1>
-{% for user in users %}
-<ul id="user.username">
-  <li>
-    <span class="field-name">User:</span>
-    <span class="field-value">{{ user.username }}</span>
-  </li>
-  <li>
-    <span class="field-name">Email:</span>
-    <span class="field-value">{{ user.email }}</span>
-  </li>
-</ul>
-{% endfor %} {% endblock %}
+{% endblock %}
